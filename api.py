@@ -5,7 +5,7 @@ from pydantic import BaseModel
 import os
 import openai
 
-# Initialize FastAPI with Branding
+# Initialize FastAPI with branding
 app = FastAPI(
     title="IDX Thematic Classification API",
     description="An agentic API for company thematic classification",
@@ -41,6 +41,8 @@ def classify_10k(request: ClassificationRequest):
     API endpoint to classify 10-K filings based on thematic categories.
     Users provide a ticker and filing date, and it returns classified results.
     """
+
+    # Simulate classification logic (Replace this with actual LLM processing)
     prompt = f"Classify the 10-K filing for {request.ticker} on {request.filing_date} based on thematic categories."
 
     try:
@@ -60,12 +62,7 @@ def classify_10k(request: ClassificationRequest):
     except Exception as e:
         return {"error": str(e)}
 
-# Root Endpoint to Confirm API is Running
-@app.get("/")
-def home():
-    return {"message": "Thematic Classification API is running!"}
-
-# Custom Swagger UI
+# Custom Swagger UI with Branding
 @app.get("/docs", include_in_schema=False)
 async def custom_swagger_ui():
     html_content = f"""
@@ -79,12 +76,16 @@ async def custom_swagger_ui():
         <style>
             .topbar-wrapper img {{
                 content: url("https://idxinsights.com/wp-content/uploads/2025/03/IDX_thematic_agent_logo.png");
-                width: 180px;
+                width: 220px;
                 height: auto;
+                margin-left: 20px;
+            }}
+            .topbar-wrapper .link img {{
+                visibility: hidden;
             }}
         </style>
     </head>
-    <body> 
+    <body>
         <div id="swagger-ui"></div>
         <script>
             const ui = SwaggerUIBundle({{
@@ -112,3 +113,8 @@ async def redoc_ui():
         openapi_url="/openapi.json",
         redoc_favicon_url="https://idxinsights.com/wp-content/uploads/2025/03/IDX_thematic_agent_logo.png",
     )
+
+# Root Endpoint to Confirm API is Running
+@app.get("/")
+def home():
+    return {"message": "Thematic Classification API is running!"}
