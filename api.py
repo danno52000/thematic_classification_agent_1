@@ -84,7 +84,7 @@ async def custom_swagger_ui():
             }}
         </style>
     </head>
-    <body>
+    <body> 
         <div id="swagger-ui"></div>
         <script>
             const ui = SwaggerUIBundle({{
