@@ -17,8 +17,8 @@ app = FastAPI(
         "email": "support@idxinsights.com",
     },
     license_info={
-        "name": "MIT License",
-        "url": "https://opensource.org/licenses/MIT",
+        "name": "IDX Private Enterprise License",
+        "url": "https://www.idxinsights.com/license",
     },
 )
 
